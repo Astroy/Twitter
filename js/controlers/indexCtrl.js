@@ -35,8 +35,8 @@ app.controller('indexCtrl', function ($scope, $http) {
         });
     }
 
-
     $scope.selectLanguage = function(language){
         $scope.searchData.selectedLanguage=language;
+        $scope.search();
     }
 });

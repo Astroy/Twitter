@@ -24,6 +24,12 @@ if($data)
         $url = 'https://api.twitter.com/1.1/search/tweets.json';
         $getfield = '?q='.$search_data->textSearch;
 
+        if(isset($search_data->selectedLanguage) && !empty($search_data->selectedLanguage))
+        {
+            $getfield=$getfield."&lang=".$search_data->selectedLanguage->code;
+        }
+
+
         echo $twitter->setGetfield($getfield)
                  ->buildOauth($url, $requestMethod)
                  ->performRequest();
