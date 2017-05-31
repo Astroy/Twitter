@@ -1,0 +1,9 @@
+body{
+}
+
+p{
+    font-family: 'Roboto', sans-serif;
+    text-align: justify;
+    font-size: 12pt;
+    padding: 8pt 10pt 0pt;
+}
