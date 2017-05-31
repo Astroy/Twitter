@@ -7,3 +7,39 @@ p{
     font-size: 12pt;
     padding: 8pt 10pt 0pt;
 }
+
+
+.result p{
+    display: block;
+}
+.result{
+}
+.result img{
+    float:left;
+    display: inline-block;
+    padding: 0px;
+}
+
+.result .textDiv{
+    padding:0px;
+}
+
+.usernameP{
+    color:#1da1f2;
+    padding: 0px 10px;
+    margin-bottom:0px;
+}
+
+.row{
+    margin:0px;
+}
+
+.advancedSearchDiv p, .advancedSearchDiv div{
+    display: inline-block;
+}
+
+
+.dropdownMenuLanguages{
+    height: 200px;
+    overflow: scroll;
+}

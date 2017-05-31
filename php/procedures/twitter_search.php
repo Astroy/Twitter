@@ -12,22 +12,28 @@ if($data)
         'consumer_secret' => "rzKPSbbJZhLr3mOHmyz8IIAnKn4RZd5WB6ZVm5c4cpCVl2hWRb"
     );  //Twitter Application Data
 
-    $url = 'https://api.twitter.com/1.1/search/tweets.json';
     $requestMethod = 'GET';
     $twitter = new TwitterAPIExchange($settings);
 
 
     $search_data=json_decode($data);
 
-    if(isset($search_data->textSearch) && !empty($search_data->textSearch)){
+    //multiple options for search depend on what fields are filled up
 
+    if(isset($search_data->textSearch) && !empty($search_data->textSearch)){
+        $url = 'https://api.twitter.com/1.1/search/tweets.json';
         $getfield = '?q='.$search_data->textSearch;
 
         echo $twitter->setGetfield($getfield)
                  ->buildOauth($url, $requestMethod)
                  ->performRequest();
     }
-
+    else if(isset($search_data->getAllLanguages) && !empty($search_data->getAllLanguages) && $search_data->getAllLanguages = true)
+    {
+        $url = 'https://api.twitter.com/1.1/help/languages.json';
+        echo $twitter->buildOauth($url, $requestMethod)
+                 ->performRequest();
+    }
 
 
 
