@@ -10,12 +10,13 @@
     <div class="row" ng-controller="indexCtrl">
         <div class="col-xs-12 col-sm-10 col-sm-offset-1 col-md-10 col-md-offset-1 col-lg-8 col-lg-offset-2" >
             <h1>Twitter Search</h1>
-            <input type="search" class="form-control" placeholder="Text input">
+            <div class="input-group">
+              <input type="search" class="form-control" ng-model="searchData.textSearch" placeholder="Search">
+              <div class="input-group-addon" id="searchBtn" ng-click="search()">Search</div>
+            </div>
             <div>
                 <ul class="list-group">
-                  <li class="list-group-item">Result 1</li>
-                  <li class="list-group-item">Result 2</li>
-                  <li class="list-group-item">Result 3</li>
+                  <li ng-repeat="result in results" class="list-group-item">{{result.text}}</li>
                 </ul>
             </div>
         </div>
