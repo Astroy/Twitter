@@ -10,15 +10,33 @@ session_start();
         <div class="row" ng-controller="indexCtrl">
             <div class="col-xs-12 col-sm-10 col-sm-offset-1 col-md-10 col-md-offset-1 col-lg-8 col-lg-offset-2" >
                 <h1>Twitter Search</h1>
+
                 <div class="input-group">
                     <div class="input-group-addon"><span class="glyphicon glyphicon glyphicon-cog" ng-click="advancedSearch=!advancedSearch" aria-hidden="true"></span></div>
-                    <input type="search" class="form-control" ng-model="searchData.textSearch" ng-change="search()" placeholder="Search">
+
+                    <input ng-if="searchBy=='Words'" type="search" class="form-control" ng-model="searchData.textSearch" ng-change="search()" placeholder="Search">
+                    <input ng-if="searchBy=='Users'" type="search" class="form-control" ng-model="searchData.username" ng-change="searchUser()" placeholder="Search by User"/>
+                    <ul class="dropdown-menu" id="userDropdown" ng-if="users" style="margin-left:40px;">
+                        <li ng-repeat="user in users" ng-click="selectUser(user)"><a>{{user.screen_name}}</a></li>
+                    </ul>
                     <div class="input-group-addon" id="searchBtn"><span class="glyphicon glyphicon-search" aria-hidden="true"></span>
                     </div>
                 </div>
 
                 <div class="panel panel-default" ng-if="advancedSearch">
                     <div class="panel-body advancedSearchDiv">
+                        <p>Search Tweets by </p>
+                        <div class="dropdown">
+                            <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+                                {{searchBy}}
+                                <span class="caret"></span>
+
+                            </button>
+                            <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+                                <li><a ng-click="setSearchBy('Words')">Words</a></li>
+                                <li><a ng-click="setSearchBy('Users')">Users</a></li>
+                            </ul>
+                        </div>
                         <p>Language </p>
                         <div class="dropdown">
                             <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">

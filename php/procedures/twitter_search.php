@@ -29,7 +29,6 @@ if($data)
             $getfield=$getfield."&lang=".$search_data->selectedLanguage->code;
         }
 
-
         echo $twitter->setGetfield($getfield)
                  ->buildOauth($url, $requestMethod)
                  ->performRequest();
@@ -40,7 +39,23 @@ if($data)
         echo $twitter->buildOauth($url, $requestMethod)
                  ->performRequest();
     }
+    else if(isset($search_data->user) && !empty($search_data->user))
+    {
+        $url="https://api.twitter.com/1.1/statuses/user_timeline.json";
+         $getfield = '?user_id='.$search_data->user->id;
 
+        echo $twitter->setGetfield($getfield)
+                 ->buildOauth($url, $requestMethod)
+                 ->performRequest();
+    }
+    else if(isset($search_data->username) && !empty($search_data->username)){
+        $url = 'https://api.twitter.com/1.1/users/search.json';
+        $getfield = '?q='.$search_data->username;
+
+        echo $twitter->setGetfield($getfield)
+                 ->buildOauth($url, $requestMethod)
+                 ->performRequest();
+    }
 
 
 }
