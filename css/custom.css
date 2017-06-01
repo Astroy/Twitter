@@ -8,6 +8,14 @@ p{
     padding: 8pt 10pt 0pt;
 }
 
+h1{
+    font-family: 'Itim', cursive;
+    color:#00aced;
+    margin:30px;
+    font-size:50px;
+    text-align:left;
+}
+
 
 .result p{
     display: block;
