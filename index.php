@@ -44,8 +44,8 @@ session_start();
                                     <li><a ng-click="setSearchBy('Users')">Users</a></li>
                                 </ul>
                             </div>
-                            <p>Language </p>
-                            <div class="dropdown">
+                            <p ng-if="searchBy=='Words'">Language </p>
+                            <div ng-if="searchBy=='Words'" class="dropdown">
                                 <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
                                     <span ng-if="!searchData.selectedLanguage">Select language</span>
                                     <span ng-if="searchData.selectedLanguage">{{searchData.selectedLanguage.name}}</span>
